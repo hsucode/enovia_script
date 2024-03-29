@@ -27,11 +27,13 @@ echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\ho
 Qwer1234
 
 ## website
+
 ```batch
-start https://http://dsplm24x.jxjty.com/3dpassport
-start https://http://dsplm24x.jxjty.com/3ddashboard
-start https://http://dsplm24x.jxjty.com/3dpassport
-start https://http://dsplm24x.jxjty.com/3dpassport
+start https://dsplm24x.jxjty.com/3dpassport
+start https://dsplm24x.jxjty.com/3ddashboard
+start http://dsplm24x.jxjty.com:19001
+start https://dsplm24x.jxjty.com/3dswym
+start https://dsplm24x.jxjty.com/3dspace
 
 
 ```
@@ -86,9 +88,7 @@ keytool -importcert -keystore "%JAVA_HOME%\lib\security\cacerts" -noprompt -stor
 keytool -list -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit -alias RootCA
 
 
-## apache
-
-v1.conf
+v6r2024x_v1.conf
 
 ```conf
 
@@ -161,27 +161,108 @@ Listen 443
 
 ## tomee
 
-Server Name|Shutdown Port| HTTP Port| Redirect Port
-3dpassport 8005 8080 8443
-3ddashboard 8006 8081 8444
-3dsearch 8007 8082 8445
-28
-© Dassault Systèmes | Confidential Information | ref.: 3DS_Document_2020
-3dspace(CAS) 8008 8083 8446
-FCS 9005 8084 8447
-3dswym 9006 8085 8448
-3dcomment 9007 8086 8449
+
+|  ServerName   | ShutdownPort  |  HTTPPort   | RedirectPort  |
+|  ----  | ----  | ----  | ----  |
+| 3dpassport | 8005 | 8080 | 8443|
+| 3ddashboard | 8006 | 8081 | 8444
+| 3dsearch | 8007 | 8082 | 8445 |
+| 3dspace(CAS) | 8008 | 8083 | 8446 |
+| FCS | 9005 | 8084 | 8447 |
+| 3dswym |9006 | 8085 | 8448 |
+| 3dcomment | 9007  | 8086  | 8449 |
+
 
 
 ```batch
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dpassport
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3ddashboard
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dsearch
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dspace_cas
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\FCS
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dswym
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dcomment
-unzip apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
+
+md c:\tomee\3dpassport
+md c:\tomee\3ddashboard
+md c:\tomee\3dsearch
+md c:\tomee\3dspace_cas
+md c:\tomee\fcs
+md c:\tomee\3dswym
+md c:\tomee\3dcomment
+md c:\tomee\3dnotification
+
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dpassport
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3ddashboard
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dsearch
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dspace_cas
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\fcs
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dswym
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dcomment
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
 
 
 ```
+
+
+## 3dpassport
+
+```sql
+
+CREATE SMALLFILE TABLESPACE "x3dpassadmin" LOGGING DATAFILE 'passdb.dbf'
+SIZE 10M AUTOEXTEND
+ON NEXT 10M MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
+create user x3dpassadmin identified by x3dpassadmin;
+grant CREATE SEQUENCE to x3dpassadmin;
+grant CREATE SESSION to x3dpassadmin;
+grant CREATE SYNONYM to x3dpassadmin;
+grant CREATE TABLE to x3dpassadmin;
+ALTER USER x3dpassadmin default tablespace "x3dpassadmin";
+ALTER USER x3dpassadmin QUOTA UNLIMITED ON "x3dpassadmin";
+
+CREATE SMALLFILE TABLESPACE "x3dpasstokens" LOGGING DATAFILE 'passtkdb.dbf'
+SIZE 10M AUTOEXTEND
+ON NEXT 10M MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
+create user x3dpasstokens identified by x3dpasstokens;
+grant CREATE SEQUENCE to x3dpasstokens;
+grant CREATE SESSION to x3dpasstokens;
+grant CREATE SYNONYM to x3dpasstokens;
+grant CREATE TABLE to x3dpasstokens;
+ALTER USER x3dpasstokens default tablespace "x3dpasstokens";
+ALTER USER x3dpasstokens QUOTA UNLIMITED ON "x3dpasstokens";
+
+```
+
+//dsplm24x.jxjty.com:1521/enoviav6
+
+x3dpasstokens
+
+
+admin_platform@jxjty.com
+Qwer1234
+
+https://dsplm24x.jxjty.com:443/3dpassport
+
+https://dsplm24x.jxjty.com:443/3dspace
+
+## 3ddashboard
+
+
+```sql
+
+CREATE USER x3ddashadmin IDENTIFIED BY x3ddashadmin;
+GRANT CREATE SESSION TO x3ddashadmin;
+GRANT RESOURCE TO x3ddashadmin;
+CREATE SMALLFILE TABLESPACE x3ddashadmin LOGGING DATAFILE 'x3ddashadmin.dbf' SIZE 10M AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
+ALTER USER x3ddashadmin default tablespace x3ddashadmin;
+ALTER USER x3ddashadmin QUOTA UNLIMITED ON x3ddashadmin;
+GRANT UNLIMITED TABLESPACE TO x3ddashadmin;
+
+
+```
+
+
+## UserIntentions
+
+md c:\UserIntentions\3dpassport\
+copy D:\DassaultSystemes\R2024x\3DPassport\InstallData\*UserIntentions*.xml c:\UserIntentions\3dpassport\
+
+md c:\UserIntentions\3ddashboard\
+copy D:\DassaultSystemes\R2024x\3DDashboard\InstallData\*UserIntentions*.xml c:\UserIntentions\3ddashboard\
+
+md c:\UserIntentions\3dspaceindex\
+copy D:\DassaultSystemes\R2024x\3DSpaceIndex\InstallData\*UserIntentions*.xml c:\UserIntentions\3dspaceindex\
+
