@@ -2,29 +2,8 @@
 
 # windows server installation
 
-## host
-
-```batch
-
-echo 127.0.0.1 dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
-echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
-
-```
-## java
-
-%JAVA_HOME%\bin
-%JAVA_HOME%\jre\bin
 
 
-
-## apps
-
-- 7zip
-- firefox
-- oracle
-- apache
-
-Qwer1234
 
 ## website
 
@@ -37,16 +16,41 @@ start https://dsplm24x.jxjty.com/3dspace
 
 
 ```
+## host
+```batch
+
+echo 127.0.0.1 dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
+echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
+
+```
+## java
+
+```batch
+setx /m Path "%PATH%;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;"
+```
+
+## apps
+
+- 7zip
+- firefox
+- oracle
+- apache
+
+Qwer1234
+
 
 ## sql
 
+```batch
 sqlplus "/as sysdba" 
+```
 
-```sql
+```batch
 SELECT * FROM dba_profiles s WHERE s.profile='DEFAULT'AND resource_name='PASSWORD_LIFE_TIME';
+```
 
+```batch
 alter profile default limit password_life_time unlimited;
-
 ```
 
 ## ssl
@@ -65,7 +69,7 @@ DNS.2 = dsplm24x.jxjty.com
 
 ```
 
-```sql
+```batch
 
 set PATH=C:\Apache24\bin;%JAVA_HOME%\bin;%PATH%
 
@@ -87,6 +91,9 @@ keytool -importcert -keystore "%JAVA_HOME%\lib\security\cacerts" -noprompt -stor
 
 keytool -list -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit -alias RootCA
 
+```
+
+## apache
 
 v6r2024x_v1.conf
 
