@@ -23,6 +23,8 @@ echo 127.0.0.1 dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
 echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
 
 ```
+
+
 ## java
 
 ```batch
@@ -33,13 +35,16 @@ setx /m Path "%PATH%;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;"
 
 - 7zip
 - firefox
-- oracle
-- apache
-
-Qwer1234
 
 
-## sql
+## user data
+
+- all password 
+    
+    Qwer1234
+
+
+## oracle
 
 ```batch
 sqlplus "/as sysdba" 
@@ -53,17 +58,24 @@ SELECT * FROM dba_profiles s WHERE s.profile='DEFAULT'AND resource_name='PASSWOR
 alter profile default limit password_life_time unlimited;
 ```
 
+## start database
 ```batch
 net start OracleOraDB19Home1TNSListener
 net start OracleRemExecServiceV2
 net start OracleServiceENOVIAV6
 
 ```
+```batch
+net stop OracleOraDB19Home1TNSListener
+net stop OracleRemExecServiceV2
+net stop OracleServiceENOVIAV6
+
+```
 
 
-## ssl
+## apache
 
-dsplm24x_jxjty_com.ext
+创建一个 dsplm24x_jxjty_com.ext 在ssl文件夹，内容如下，后期会用到
 
 ```conf
 
@@ -76,6 +88,7 @@ DNS.1 = dsplm24x.jxjty.com
 DNS.2 = dsplm24x.jxjty.com
 
 ```
+逐步运行如下脚本
 
 ```batch
 
@@ -212,6 +225,24 @@ unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
 
 ## slient  installation
 
+
+
+## UserIntentions
+
+备份
+
+```batch
+md c:\UserIntentions\3dpassport\
+copy D:\DassaultSystemes\R2024x\3DPassport\InstallData\*UserIntentions*.xml c:\UserIntentions\3dpassport\
+
+md c:\UserIntentions\3ddashboard\
+copy D:\DassaultSystemes\R2024x\3DDashboard\InstallData\*UserIntentions*.xml c:\UserIntentions\3ddashboard\
+
+md c:\UserIntentions\3dspaceindex\
+copy D:\DassaultSystemes\R2024x\3DSpaceIndex\InstallData\*UserIntentions*.xml c:\UserIntentions\3dspaceindex\
+
+```
+
 ```batch
 @echo off
 
@@ -298,18 +329,6 @@ GRANT UNLIMITED TABLESPACE TO x3ddashadmin;
 
 
 ```
-
-
-## UserIntentions
-
-md c:\UserIntentions\3dpassport\
-copy D:\DassaultSystemes\R2024x\3DPassport\InstallData\*UserIntentions*.xml c:\UserIntentions\3dpassport\
-
-md c:\UserIntentions\3ddashboard\
-copy D:\DassaultSystemes\R2024x\3DDashboard\InstallData\*UserIntentions*.xml c:\UserIntentions\3ddashboard\
-
-md c:\UserIntentions\3dspaceindex\
-copy D:\DassaultSystemes\R2024x\3DSpaceIndex\InstallData\*UserIntentions*.xml c:\UserIntentions\3dspaceindex\
 
 
 
@@ -402,6 +421,12 @@ call C:\TomEE\3dsywm\bin\shutdown.bat
 
 
 ## user intentions
+
+```xml
+<SetVariableProtected name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
+```
+
+遇到以上需要写密码的，删除 Protected ，在后面值里面写上密码
 
 ### 3dpassport_ga
 
