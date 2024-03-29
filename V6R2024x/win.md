@@ -5,8 +5,17 @@
 ## host
 
 ```batch
-dsplm24x.jxjty.com
+
+echo 127.0.0.1 dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
+127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
+
 ```
+## java
+
+%JAVA_HOME%\bin
+%JAVA_HOME%\jre\bin
+
+
 
 ## apps
 
@@ -15,3 +24,12 @@ dsplm24x.jxjty.com
 - oracle
 - apache
 
+## website
+```batch
+start https://http://dsplm24x.jxjty.com/3dpassport
+start https://http://dsplm24x.jxjty.com/3ddashboard
+start https://http://dsplm24x.jxjty.com/3dpassport
+start https://http://dsplm24x.jxjty.com/3dpassport
+
+
+```
