@@ -1,6 +1,6 @@
 
 
-# windows server installation
+# 3DEXPERIENCE R2024x windows server installation
 
 
 
@@ -58,7 +58,7 @@ SELECT * FROM dba_profiles s WHERE s.profile='DEFAULT'AND resource_name='PASSWOR
 alter profile default limit password_life_time unlimited;
 ```
 
-## start database
+### start database
 ```batch
 net start OracleOraDB19Home1TNSListener
 net start OracleRemExecServiceV2
@@ -192,7 +192,7 @@ Listen 443
 | 3dpassport | 8005 | 8080 | 8443|
 | 3ddashboard | 8006 | 8081 | 8444
 | 3dsearch | 8007 | 8082 | 8445 |
-| 3dspace(CAS) | 8008 | 8083 | 8446 |
+| 3dspace_CAS | 8008 | 8083 | 8446 |
 | FCS | 9005 | 8084 | 8447 |
 | 3dswym |9006 | 8085 | 8448 |
 | 3dcomment | 9007  | 8086  | 8449 |
