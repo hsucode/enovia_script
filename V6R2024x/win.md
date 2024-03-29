@@ -203,6 +203,20 @@ unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
 
 ```
 
+## install data
+
+
+//dsplm24x.jxjty.com:1521/enoviav6
+
+| name | password |
+|  ----  | ----  |
+| admin_platform@jxjty.com |Qwer1234 |
+
+
+https://dsplm24x.jxjty.com:443/3dpassport
+
+https://dsplm24x.jxjty.com:443/3dspace
+
 
 ## 3dpassport
 
@@ -232,17 +246,6 @@ ALTER USER x3dpasstokens QUOTA UNLIMITED ON "x3dpasstokens";
 
 ```
 
-//dsplm24x.jxjty.com:1521/enoviav6
-
-x3dpasstokens
-
-
-admin_platform@jxjty.com
-Qwer1234
-
-https://dsplm24x.jxjty.com:443/3dpassport
-
-https://dsplm24x.jxjty.com:443/3dspace
 
 ## 3ddashboard
 
