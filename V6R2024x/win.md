@@ -53,6 +53,14 @@ SELECT * FROM dba_profiles s WHERE s.profile='DEFAULT'AND resource_name='PASSWOR
 alter profile default limit password_life_time unlimited;
 ```
 
+```batch
+net start OracleOraDB19Home1TNSListener
+net start OracleRemExecServiceV2
+net start OracleServiceENOVIAV6
+
+```
+
+
 ## ssl
 
 dsplm24x_jxjty_com.ext
@@ -114,7 +122,6 @@ MaxKeepAliveRequests 400
 
 </IfModule>
 
-
 #LoadModule deflate_module modules/mod_deflate.so
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/xml
@@ -141,6 +148,7 @@ Listen 443
     ProxyRequests Off
     #Include conf/3DPassport_httpd_fragment.conf
     #Include conf/3DDashboard_httpd_fragment.conf
+    #Include conf/mepreferences_httpd_fragment.conf
     #Include conf/federated_httpd_fragment.conf
     #Include conf/3DSpace_httpd_fragment.conf
     #Include conf/fcs_httpd_fragment.conf
@@ -160,8 +168,6 @@ Listen 443
 </VirtualHost>
 
 ```
-
-
 
 
 
@@ -362,3 +368,174 @@ call C:\TomEE\3dsywm\bin\shutdown.bat
 
 
 ```
+
+
+
+## user intentions
+
+### 3dpassport_ga
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_PASS.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="false"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3dpassport"/>
+  <SetVariable name="PASS_ORACLE_OraclePassTnsNames" value=""/>
+  <SetVariable name="PASS_ORACLE_SQLURL_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="PASS_ORACLE_SQLURLCas_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="PASS_ORACLE_SQLUserAdmin" value="x3dpassadmin"/>
+  <SetVariable name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
+  <SetVariable name="PASS_ORACLE_SQLUserCas" value="x3dpasstokens"/>
+  <SetVariable name="PASS_ORACLE_SQLPasswordCas" value="x3dpasstokens"/>
+  <SetVariable name="PASS_ORACLE_DatabaseConnectionCheck" value="true"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
+  <SetVariable name="ForceLowerCase" value="false"/>
+  <SetVariable item="oracle" name="DatabaseType" value="true"/>
+  <SetVariable name="AdminPlatformEmail" value="admin_platform@jxjty.com"/>
+  <SetVariable name="AdminPlatformPassword" value="Qwer1234"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DPassport"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+```
+### 3dpassport_fd01
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_PASS.media" mediaVersion="426.1">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3dpassport"/>
+  <SetVariable name="PASS_ORACLE_OraclePassTnsNames" value=""/>
+  <SetVariable name="PASS_ORACLE_SQLURL_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="PASS_ORACLE_SQLURLCas_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="PASS_ORACLE_SQLUserAdmin" value="x3dpassadmin"/>
+  <SetVariableProtected name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
+  <SetVariable name="PASS_ORACLE_SQLUserCas" value="x3dpasstokens"/>
+  <SetVariableProtected name="PASS_ORACLE_SQLPasswordCas" value="x3dpasstokens"/>
+  <SetVariable name="PASS_ORACLE_DatabaseConnectionCheck" value="true"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
+  <SetVariable name="ForceLowerCase" value="false"/>
+  <SetVariable item="oracle" name="DatabaseType" value="true"/>
+  <SetVariable name="AdminPlatformEmail" value="admin_platform@jxjty.com"/>
+  <SetVariableProtected name="AdminPlatformPassword" value="Put your password here."/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+```
+
+### 3ddashboard_ga
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
+  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
+  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
+  <SetVariable name="install_Embedded_TomEE" value="false"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
+  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
+  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
+  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
+  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DDashboard"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+```
+### 3ddashboard_fd01
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426.1">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
+  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
+  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
+  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
+  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
+  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
+  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+
+```
+### 3ddashboard_fd02
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426.2">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
+  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
+  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
+  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
+  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
+  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
+  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+
+```
+
+
+
+
+
+
+### 3dspaceindex
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\ENOVIA_SXI.media" mediaVersion="426">
+  <SetVariable name="FullCloud_URL" value="http://dsplm24x.jxjty.com:19000"/>
+  <SetVariable name="FullCloud_NumSlices" value="1"/>
+  <SetVariable name="FullCloud_NumAnalyzers" value="8"/>
+  <SetVariable name="FullCloud_AdminPassword" value="Qwer1234"/>
+  <SetVariable item="NonHACloudview" name="Radio_InstallMODE" value="true"/>
+  <SetVariable name="PATH_CVDATADIR_CUSTO" value="D:\DassaultSystemes\R2024x\3DSpaceIndex\win_b64\cv\data"/>
+  <SetVariable item="Custom" name="Radio_mode" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DSpaceIndex"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
+```
+
+
