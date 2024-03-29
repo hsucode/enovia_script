@@ -75,8 +75,7 @@ set PATH=C:\Apache24\bin;%JAVA_HOME%\bin;%PATH%
 
 openssl genrsa -des3 -out RootCA.key -passout pass:Qwer1234 2048
 
-openssl req -x509 -sha256 -new -nodes -key RootCA.key -days 3650 -out RootCA.crt -
-passin pass:Qwer1234 -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=RootCA"
+openssl req -x509 -sha256 -new -nodes -key RootCA.key -days 3650 -out RootCA.crt -passin pass:Qwer1234 -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=RootCA"
 
 openssl rsa -in RootCA.key -out dsplm24x_jxjty_com.key -passin pass:Qwer1234
 
