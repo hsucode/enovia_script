@@ -362,6 +362,7 @@ copy D:\DassaultSystemes\R2024x\FedSearch\win_b64\templates\*.conf C:\Apache24\c
 
 ## 3dspace
 
+Error : Can not load mxoci80.dll ?
 
 [msvcp120.dll](./24_3dspace/msvcp120.dll)
 
@@ -402,12 +403,22 @@ copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\*.conf C:\Apache24\con
 
 copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\*CAS*.bat C:\tomee\3dspace_cas\bin\
 
-rename C:\tomee\3dspace_cas\bin\setenvCAS.bat C:\tomee\3dspace_cas\bin\setenv.bat
+cd /d C:\tomee\3dspace_cas\bin\
+ren setenvCAS.bat setenv.bat
 
-copy  C:\tomee\3dspace_cas\webapps\
+copy  D:\DassaultSystemes\R2024x\3DSpace\distrib_CAS\*.war C:\tomee\3dspace_cas\webapps\
 ```
 
+### hotfix
 
+A manual step is required after this hot fix installation.
+The following MQL command must be executed once all applications are installed (it may take several minutes).
+Start a MQL command window from <server> installation and type this: 
+
+```batch
+MQL>set context person creator;
+MQL>exec prog VPLMDataMigration;
+```
 
 
 ## start server
