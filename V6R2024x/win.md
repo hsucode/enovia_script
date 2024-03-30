@@ -203,6 +203,7 @@ Listen 443
 | 3ddashboard | 8006 | 8081 | 8444
 | 3dsearch | 8007 | 8082 | 8445 |
 | 3dspace_CAS | 8008 | 8083 | 8446 |
+| 3dspace_NoCAS | 8009 | 8070 | 8456 |
 | FCS | 9005 | 8084 | 8447 |
 | 3dswym |9006 | 8085 | 8448 |
 | 3dcomment | 9007  | 8086  | 8449 |
@@ -397,7 +398,7 @@ CREATE SMALLFILE TABLESPACE "V1_INDEX" LOGGING DATAFILE 'V1_INDEX.dbf' SIZE 10M 
 
 
 ```
-
+for cas
 ```batch
 copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\*.conf C:\Apache24\conf
 
@@ -408,6 +409,16 @@ ren setenvCAS.bat setenv.bat
 
 copy  D:\DassaultSystemes\R2024x\3DSpace\distrib_CAS\*.war C:\tomee\3dspace_cas\webapps\
 ```
+
+for nocas
+
+```batch
+
+copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\setenv.bat C:\tomee\3dspace_nocas\bin\
+
+copy  D:\DassaultSystemes\R2024x\3DSpace\distrib_NoCAS\*.war C:\tomee\3dspace_nocas\webapps\
+```
+
 
 ### hotfix
 
