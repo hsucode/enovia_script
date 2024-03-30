@@ -240,19 +240,18 @@ unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
 
 ## UserIntentions
 
-备份
+自动复制安装数据
 
 ```batch
-md c:\UserIntentions\3dpassport\
-copy D:\DassaultSystemes\R2024x\3DPassport\InstallData\*UserIntentions*.xml c:\UserIntentions\3dpassport\
 
-md c:\UserIntentions\3ddashboard\
-copy D:\DassaultSystemes\R2024x\3DDashboard\InstallData\*UserIntentions*.xml c:\UserIntentions\3ddashboard\
-
-md c:\UserIntentions\3dspaceindex\
-copy D:\DassaultSystemes\R2024x\3DSpaceIndex\InstallData\*UserIntentions*.xml c:\UserIntentions\3dspaceindex\
+@echo off
+title COPY_InstallData
+cd /d %~dp0
+md InstallData
+xcopy /s /e /c /y /h /r /d .\DassaultSystemes\*UserIntentions*.xml .\InstallData\
 
 ```
+
 
 ```batch
 @echo off
@@ -693,3 +692,15 @@ call C:\TomEE\3dsywm\bin\shutdown.bat
 ```
 
 
+
+powershell 删除所有空文件夹
+
+```sh
+$folderPath = "D:\InstallData\InstallData" # 替换为你要遍历的文件夹路径
+
+Get-ChildItem -Path $folderPath -Recurse -Directory | ForEach-Object {
+    if ((Get-ChildItem -Path $_.FullName -Recurse -File | Measure-Object).Count -eq 0) {
+        Remove-Item -Path $_.FullName -Recurse -Force
+    }
+}
+```
