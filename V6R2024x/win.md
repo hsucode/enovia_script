@@ -362,6 +362,19 @@ copy D:\DassaultSystemes\R2024x\FedSearch\win_b64\templates\*.conf C:\Apache24\c
 
 ## 3dspace
 
+
+[msvcp120.dll](./24_3dspace/msvcp120.dll)
+
+[msvcr120.dll](./24_3dspace/msvcr120.dll)
+
+```batch
+copy msvcp120.dll D:\DS\V6R2024x\AM_3DEXP_Platform.AllOS\2\3DSpace\Windows64\1\inst\DBConnectionTest\win_b64\code\bin\
+
+copy msvcr120.dll D:\DS\V6R2024x\AM_3DEXP_Platform.AllOS\2\3DSpace\Windows64\1\inst\DBConnectionTest\win_b64\code\bin
+
+```
+
+
 ```sql
 create user M1 identified by M1;
 grant connect, resource, create view to M1;
