@@ -324,6 +324,14 @@ ALTER USER x3dpasstokens QUOTA UNLIMITED ON "x3dpasstokens";
 ```
 
 
+```batch
+
+copy D:\DassaultSystemes\R2024x\3DPassport\win_b64\templates\*.conf C:\Apache24\conf
+
+```
+
+
+
 ## 3ddashboard
 
 
@@ -340,6 +348,17 @@ GRANT UNLIMITED TABLESPACE TO x3ddashadmin;
 
 ```
 
+```batch
+copy D:\DassaultSystemes\R2024x\3DDashboard\win_b64\templates\*.conf C:\Apache24\conf
+
+```
+
+## 3dSearch
+
+```batch
+copy D:\DassaultSystemes\R2024x\FedSearch\win_b64\templates\*.conf C:\Apache24\conf
+
+```
 
 ## 3dspace
 
@@ -365,6 +384,15 @@ CREATE SMALLFILE TABLESPACE "V1_INDEX" LOGGING DATAFILE 'V1_INDEX.dbf' SIZE 10M 
 
 ```
 
+```batch
+copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\*.conf C:\Apache24\conf
+
+copy D:\DassaultSystemes\R2024x\3DSpace\win_b64\templates\*CAS*.bat C:\tomee\3dspace_cas\bin\
+
+rename C:\tomee\3dspace_cas\bin\setenvCAS.bat C:\tomee\3dspace_cas\bin\setenv.bat
+
+copy  C:\tomee\3dspace_cas\webapps\
+```
 
 
 
