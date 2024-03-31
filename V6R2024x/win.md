@@ -116,7 +116,7 @@ openssl req -x509 -sha256 -new -nodes -key RootCA.key -days 3650 -out RootCA.crt
 
 openssl rsa -in RootCA.key -out dsplm24x_jxjty_com.key -passin pass:Qwer1234
 
-openssl req -new -key dsplm24x_jxjty_com.key -out dsplm24x_jxjty_com.csr -subj"/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=*.jxjty.com"
+openssl req -new -key dsplm24x_jxjty_com.key -out dsplm24x_jxjty_com.csr -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=*.jxjty.com"
 
 openssl x509 -sha256 -req -in dsplm24x_jxjty_com.csr -CA RootCA.crt -CAkey RootCA.key -CAcreateserial -out dsplm24x_jxjty_com.crt -days 3650 -passin pass:Qwer1234 -extfile dsplm24x_jxjty_com.ext
 
