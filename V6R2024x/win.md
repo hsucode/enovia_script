@@ -27,6 +27,12 @@ echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\ho
 
 ## java
 
+cd /d %~dp0
+
+```batch
+unzip.exe ibm-semeru-open-jdk_x64_windows_17.0.9_9_openj9-0.41.0.zip -d c:\
+```
+
 ```batch
 setx /m Path "%PATH%;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;"
 ```
@@ -121,13 +127,24 @@ keytool -importcert -keystore "%JAVA_HOME%\lib\security\cacerts" -noprompt -stor
 
 keytool -list -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit -alias RootCA
 
+keytool -delete -alias RootCA -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit
+
+keytool -list -keystore /path/to/keystore.jks
+keytool -list -v -keystore /path/to/keystore.jks | grep -A 10 'Alias name: mycert'
+
+keytool -list -v -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit
+
+
+C:\Apache24\bin\openssl.exe x509 -noout -text -in r2022x.crt
+
+
 ```
 
-## apache
+
 
 v6r2024x_v1.conf
 
-```conf
+```xml
 
 KeepAlive On
 KeepAliveTimeout 6
@@ -196,6 +213,7 @@ Listen 443
 
 ## tomee
 
+端口号设置
 
 |  ServerName   | ShutdownPort  |  HTTPPort   | RedirectPort  |
 |  ----  | ----  | ----  | ----  |
@@ -210,25 +228,44 @@ Listen 443
 | 3dnotification| 8089 | 8087  | 8450 |
 
 
+使用以下批处理进行文件自动解压
+
 ```batch
 
-md c:\tomee\3dpassport
-md c:\tomee\3ddashboard
-md c:\tomee\3dsearch
-md c:\tomee\3dspace_cas
-md c:\tomee\fcs
-md c:\tomee\3dswym
-md c:\tomee\3dcomment
-md c:\tomee\3dnotification
+cd /d %~dp0
 
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dpassport
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3ddashboard
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dsearch
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dspace_cas
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\fcs
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dswym
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dcomment
-unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
+md c:\TomEE\3DPassport
+md c:\TomEE\3DDashboard
+md c:\TomEE\3DSearch
+md c:\TomEE\3DSpace_CAS
+md c:\TomEE\3DSpace_NoCAS
+md c:\TomEE\FCS
+md c:\TomEE\3DSwym
+md c:\TomEE\3DComment
+md c:\TomEE\3DNotification
+
+
+:a
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dpassport
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3ddashboard
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dsearch
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dspace_cas
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\fcs
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dswym
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dcomment
+unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dnotification
+goto 0
+:b
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dpassport
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3ddashboard
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dsearch
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dspace_cas
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\fcs
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dswym
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dcomment
+unzip.exe apache-tomee-9.1.2-plus.zip -d c:\TomEE\3dnotification
+goto 0
+:0
 
 
 ```
@@ -238,47 +275,6 @@ unzip.exe apache-tomee-9.1.2-plus.zip -d c:\tomee\3dnotification
 
 
 
-## UserIntentions
-
-自动复制安装数据
-
-```batch
-
-@echo off
-title COPY_InstallData
-cd /d %~dp0
-md InstallData
-xcopy /s /e /c /y /h /r /d .\DassaultSystemes\*UserIntentions*.xml .\InstallData\
-
-```
-
-
-```batch
-@echo off
-
-cd /d %~dp0
-::License
-@REM echo localhost:4085 >>C:\ProgramData\DassaultSystemes\Licenses\DSLicSrv.txt
-:GA
-echo 3DPassport
-AM_3DEXP_Platform.AllOS\1\3DPassport\Windows64\1\StartTUI.exe --silent InstallData\3DPassport\UserIntentions_CODE.xml
-echo 3DDashboard
-AM_3DEXP_Platform.AllOS\1\3DDashboard\Windows64\1\StartTUI.exe --silent InstallData\3DDashboard\UserIntentions_CODE.xml
-echo 3DSearch
-AM_3DEXP_Platform.AllOS\1\FederatedSearchFoundation\Windows64\1\StartTUI.exe --silent InstallData\FedSearch\UserIntentions_CODE.xml
-echo 3DSpaceIndex
-AM_3DEXP_Platform.AllOS\2\3DSpaceIndex\Windows64\1\StartTUI.exe --silent InstallData\3DSpaceIndex\UserIntentions_CODE.xml
-echo 3DSpace
-AM_3DEXP_Platform.AllOS\2\3DSpace\Windows64\1\StartTUI.exe --silent	InstallData\3DSpace\UserIntentions_CODE.xml
-
-echo 3DSwym
-echo 3DNotification
-echo 3DComment
-
-
-:FP
-
-```
 
 ## install data
 
@@ -518,7 +514,7 @@ call C:\TomEE\3dsywm\bin\shutdown.bat
 
 
 
-## user intentions
+## 静默安装方法
 
 ```xml
 <SetVariableProtected name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
@@ -526,171 +522,66 @@ call C:\TomEE\3dsywm\bin\shutdown.bat
 
 遇到以上需要写密码的，删除 Protected ，在后面值里面写上密码
 
-### 3dpassport_ga
+使用的自动安装xml 从以下地址复制
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\X3D_PASS.media" mediaVersion="426">
-  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
-  <SetVariable name="installEmbeddedServerJRE" value="false"/>
-  <SetVariable name="install_Embedded_TomEE" value="false"/>
-  <SetVariable name="TomEEPath" value="C:\tomee\3dpassport"/>
-  <SetVariable name="PASS_ORACLE_OraclePassTnsNames" value=""/>
-  <SetVariable name="PASS_ORACLE_SQLURL_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="PASS_ORACLE_SQLURLCas_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="PASS_ORACLE_SQLUserAdmin" value="x3dpassadmin"/>
-  <SetVariable name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
-  <SetVariable name="PASS_ORACLE_SQLUserCas" value="x3dpasstokens"/>
-  <SetVariable name="PASS_ORACLE_SQLPasswordCas" value="x3dpasstokens"/>
-  <SetVariable name="PASS_ORACLE_DatabaseConnectionCheck" value="true"/>
-  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
-  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
-  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
-  <SetVariable name="ForceLowerCase" value="false"/>
-  <SetVariable item="oracle" name="DatabaseType" value="true"/>
-  <SetVariable name="AdminPlatformEmail" value="admin_platform@jxjty.com"/>
-  <SetVariable name="AdminPlatformPassword" value="Qwer1234"/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DPassport"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
-```
-### 3dpassport_fd01
+https://github.com/hsucode/enovia_script.git
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\X3D_PASS.media" mediaVersion="426.1">
-  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
-  <SetVariable name="installEmbeddedServerJRE" value="false"/>
-  <SetVariable name="TomEEPath" value="C:\tomee\3dpassport"/>
-  <SetVariable name="PASS_ORACLE_OraclePassTnsNames" value=""/>
-  <SetVariable name="PASS_ORACLE_SQLURL_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="PASS_ORACLE_SQLURLCas_HOST_AND_PORT" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="PASS_ORACLE_SQLUserAdmin" value="x3dpassadmin"/>
-  <SetVariableProtected name="PASS_ORACLE_SQLPasswordAdmin" value="x3dpassadmin"/>
-  <SetVariable name="PASS_ORACLE_SQLUserCas" value="x3dpasstokens"/>
-  <SetVariableProtected name="PASS_ORACLE_SQLPasswordCas" value="x3dpasstokens"/>
-  <SetVariable name="PASS_ORACLE_DatabaseConnectionCheck" value="true"/>
-  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
-  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
-  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
-  <SetVariable name="ForceLowerCase" value="false"/>
-  <SetVariable item="oracle" name="DatabaseType" value="true"/>
-  <SetVariable name="AdminPlatformEmail" value="admin_platform@jxjty.com"/>
-  <SetVariableProtected name="AdminPlatformPassword" value="Put your password here."/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
-```
 
-### 3ddashboard_ga
+自动复制安装数据
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426">
-  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
-  <SetVariable name="installEmbeddedServerJRE" value="false"/>
-  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
-  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
-  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
-  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
-  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
-  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
-  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
-  <SetVariable name="install_Embedded_TomEE" value="false"/>
-  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
-  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
-  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
-  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
-  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DDashboard"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
-```
-### 3ddashboard_fd01
+```batch
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426.1">
-  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
-  <SetVariable name="installEmbeddedServerJRE" value="false"/>
-  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
-  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
-  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
-  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
-  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
-  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
-  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
-  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
-  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
-  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
-  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
-  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
+@echo off
+title COPY_InstallData
+cd /d %~dp0
+md InstallData
+xcopy /s /e /c /y /h /r /d .\DassaultSystemes\*UserIntentions*.xml .\InstallData\
 
 ```
-### 3ddashboard_fd02
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\X3D_DASH.media" mediaVersion="426.2">
-  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
-  <SetVariable name="installEmbeddedServerJRE" value="false"/>
-  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
-  <SetVariable name="uwp_oracle_full_service" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
-  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
-  <SetVariable name="uwp_oracle_database_password" value="x3ddashadmin"/>
-  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
-  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
-  <SetVariable name="X3DCSMA_3DCompassURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_6WTAGURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
-  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
-  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@service.mydomain"/>
-  <SetVariable name="TomEEPath" value="C:\tomee\3ddashboard"/>
-  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
-  <SetVariable name="dsi_domain_untrusted" value="untrusted.dsplm24x.jxjty.com"/>
-  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
-  <SetVariable name="dsi_shared_dir" value="D:\DassaultSystemes\3DDashboardData"/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
+```bash
+cp -ra /app/DassaultSystemes/*UserIntentions*.xml /home/x3ds/Downloads/userdata/
+
+find /app/DassaultSystemes/ -type f -name "*UserIntentions*.xml" -exec cp --parents \{} /home/x3ds/Downloads/userdata/ \;
 
 ```
 
 
 
 
+使用以下命令进行软件的静默安装
+
+```batch
+@echo off
+
+cd /d %~dp0
+
+:GA
+echo 3DPassport
+AM_3DEXP_Platform.AllOS\1\3DPassport\Windows64\1\StartTUI.exe --silent InstallData\3DPassport\UserIntentions_CODE.xml
+echo 3DDashboard
+AM_3DEXP_Platform.AllOS\1\3DDashboard\Windows64\1\StartTUI.exe --silent InstallData\3DDashboard\UserIntentions_CODE.xml
+echo 3DSearch
+AM_3DEXP_Platform.AllOS\1\FederatedSearchFoundation\Windows64\1\StartTUI.exe --silent InstallData\FedSearch\UserIntentions_CODE.xml
+echo 3DSpaceIndex
+AM_3DEXP_Platform.AllOS\2\3DSpaceIndex\Windows64\1\StartTUI.exe --silent InstallData\3DSpaceIndex\UserIntentions_CODE.xml
+echo 3DSpace
+AM_3DEXP_Platform.AllOS\2\3DSpace\Windows64\1\StartTUI.exe --silent	InstallData\3DSpace\UserIntentions_CODE.xml
+
+echo 3DSwym
+echo 3DNotification
+echo 3DComment
 
 
-### 3dspaceindex
+:FP
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<UserIntentions mediaName="CODE\win_b64\ENOVIA_SXI.media" mediaVersion="426">
-  <SetVariable name="FullCloud_URL" value="http://dsplm24x.jxjty.com:19000"/>
-  <SetVariable name="FullCloud_NumSlices" value="1"/>
-  <SetVariable name="FullCloud_NumAnalyzers" value="8"/>
-  <SetVariable name="FullCloud_AdminPassword" value="Qwer1234"/>
-  <SetVariable item="NonHACloudview" name="Radio_InstallMODE" value="true"/>
-  <SetVariable name="PATH_CVDATADIR_CUSTO" value="D:\DassaultSystemes\R2024x\3DSpaceIndex\win_b64\cv\data"/>
-  <SetVariable item="Custom" name="Radio_mode" value="true"/>
-  <SetVariable name="DSYWelcomePanel"/>
-  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\3DSpaceIndex"/>
-  <SetVariable name="FinishPanel"/>
-</UserIntentions>
 ```
 
+## 设置许可证
+
+```batch
+echo localhost:4085 >>C:\ProgramData\DassaultSystemes\Licenses\DSLicSrv.txt
+```
 
 
 powershell 删除所有空文件夹
