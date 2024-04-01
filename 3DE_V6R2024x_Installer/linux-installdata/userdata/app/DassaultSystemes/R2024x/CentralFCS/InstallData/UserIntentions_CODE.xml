@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\ENOVIA_FCS.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="true"/>
+  <SetVariable name="TomEEConnectionPort" value="8086"/>
+  <SetVariable name="fcsSrvURL" value="https://r2024x.mydomain.com:443/centralfcs"/>
+  <SetVariable name="X3DCSMA_3DSpaceURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/CentralFCS"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

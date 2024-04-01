@@ -141,6 +141,30 @@ C:\Apache24\bin\openssl.exe x509 -noout -text -in r2022x.crt
 ```
 
 
+```XML
+
+mod_authz_core.so
+mod_cache.so
+mod_cache_disk.so
+mod_deflate.so
+mod_filter.so
+mod_headers.so
+mod_log_config.so
+mod_proxy.so
+mod_proxy_http.so
+mod_proxy_wstunnel.so
+mod_rewrite.so
+mod_setenvif.so
+mod_socache_shmcb.so
+mod_ssl.so
+mod_slotmem_shm.so
+mod_alias.so
+mod_authz_host.so
+mod_dir.so
+mod_mime.so
+
+```
+
 
 v6r2024x_v1.conf
 

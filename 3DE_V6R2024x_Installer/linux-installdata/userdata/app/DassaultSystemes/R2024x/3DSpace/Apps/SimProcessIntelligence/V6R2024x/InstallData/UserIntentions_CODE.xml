@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_Web_Simulation.media" mediaVersion="426">
+  <SetVariable name="PATH_PH_Server" value="/app/DassaultSystemes/R2024x/3DSpace"/>
+  <SetVariable name="Text_SuperUserName" value="creator"/>
+  <SetVariableProtected name="Text_SuperUserPwd" value="Put your password here."/>
+  <SetVariable name="BOOL_UpdateDB" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

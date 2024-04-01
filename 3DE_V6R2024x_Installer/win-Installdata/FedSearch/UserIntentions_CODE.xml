@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_SEAR.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="false"/>
+  <SetVariable name="TomEEPath" value="C:\tomee\3dsearch"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_FEDERATED_SEARCH" value="https://dsplm24x.jxjty.com:443/federated"/>
+  <SetVariable name="X3DCSMA_3DSpaceURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_3DSWYMURL" value="https://dsplm24x.jxjty.com:443/3dswym"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="D:\DassaultSystemes\R2024x\FedSearch"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_PASS.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="true"/>
+  <SetVariable name="TomEEConnectionPort" value="8080"/>
+  <SetVariable name="PASS_ORACLE_OraclePassTnsNames" value=""/>
+  <SetVariable name="PASS_ORACLE_SQLURL_HOST_AND_PORT" value="//localhost:1521/MYDB"/>
+  <SetVariable name="PASS_ORACLE_SQLURLCas_HOST_AND_PORT" value="//localhost:1521/MYDB"/>
+  <SetVariable name="PASS_ORACLE_SQLUserAdmin" value="x3dpassadmin"/>
+  <SetVariableProtected name="PASS_ORACLE_SQLPasswordAdmin" value="Put your password here."/>
+  <SetVariable name="PASS_ORACLE_SQLUserCas" value="x3dpasstokens"/>
+  <SetVariableProtected name="PASS_ORACLE_SQLPasswordCas" value="Put your password here."/>
+  <SetVariable name="PASS_ORACLE_DatabaseConnectionCheck" value="true"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://r2024x.mydomain.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@mydomain.com"/>
+  <SetVariable name="ForceLowerCase" value="false"/>
+  <SetVariable item="oracle" name="DatabaseType" value="true"/>
+  <SetVariable name="AdminPlatformEmail" value="admin_platform@mydomain.com"/>
+  <SetVariableProtected name="AdminPlatformPassword" value="Put your password here."/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DPassport"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

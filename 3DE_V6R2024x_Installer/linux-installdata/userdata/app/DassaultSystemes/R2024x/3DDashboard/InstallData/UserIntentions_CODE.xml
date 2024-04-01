@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_DASH.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="uwp_oracle_tnsnames_dir" value=""/>
+  <SetVariable name="uwp_oracle_full_service" value="//localhost:1521/MYDB"/>
+  <SetVariable name="uwp_oracle_database_user" value="x3ddashadmin"/>
+  <SetVariableProtected name="uwp_oracle_database_password" value="Put your password here."/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://r2024x.mydomain.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://r2024x.mydomain.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_6WTAGURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@mydomain.com"/>
+  <SetVariable name="install_Embedded_TomEE" value="true"/>
+  <SetVariable name="TomEEConnectionPort" value="8082"/>
+  <SetVariable item="oracle" name="dsi_database_type" value="true"/>
+  <SetVariable name="dsi_domain_untrusted" value="untrusted.mydomain.com"/>
+  <SetVariable name="dsi_uwaProxy_domainWhiteList" value=".*"/>
+  <SetVariable name="dsi_shared_dir" value="/app/DassaultSystemes/R2024x/3DDashboardData"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DDashboard"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

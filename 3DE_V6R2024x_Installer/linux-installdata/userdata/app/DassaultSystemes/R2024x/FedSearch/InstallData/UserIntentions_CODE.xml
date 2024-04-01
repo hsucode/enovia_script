@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_SEAR.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="true"/>
+  <SetVariable name="TomEEConnectionPort" value="8084"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://r2024x.mydomain.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_FEDERATED_SEARCH" value="https://r2024x.mydomain.com:443/federated"/>
+  <SetVariable name="X3DCSMA_3DSpaceURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_3DSWYMURL" value="https://r2024x.mydomain.com:443/3dswym"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/FedSearch"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

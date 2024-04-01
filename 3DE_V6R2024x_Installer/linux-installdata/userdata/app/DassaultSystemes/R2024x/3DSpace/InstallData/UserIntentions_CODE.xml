@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_CSMA.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="Path_TnsNamesOraPath" value="/app/oracle/product/19.3.0.0/db_1/network/admin"/>
+  <SetVariable name="Oracle_ConnectUser" value="x3dspaceadmin"/>
+  <SetVariableProtected name="Oracle_ConnectPwd" value="Put your password here."/>
+  <SetVariable name="Oracle_Instance" value="MYDB"/>
+  <SetVariable name="Oracle_Default_Data_TBS" value="X3DSPACEADMIN_DATA_TS"/>
+  <SetVariable name="Oracle_Default_Index_TBS" value="X3DSPACEADMIN_INDEX_TS"/>
+  <SetVariable item="Oracle" name="Radio_DBChoice" value="true"/>
+  <SetVariableProtected name="X3DCSMA_creator_password" value="Put your password here."/>
+  <SetVariableProtected name="X3DCSMA_administrator_password" value="Put your password here."/>
+  <SetVariable name="DATA_TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DSpaceData"/>
+  <SetVariable name="BOOL_UpdateDB" value="true"/>
+  <SetVariable name="Text_DataTBS_wrap" value="X3DSPACEADMIN_DATA_TS"/>
+  <SetVariable name="Text_IndexTBS_wrap" value="X3DSPACEADMIN_INDEX_TS"/>
+  <SetVariable name="VplmDataTBS" value="X3DSPACEADMIN_DATA_TS"/>
+  <SetVariable name="VplmIndexTBS" value="X3DSPACEADMIN_INDEX_TS"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://r2024x.mydomain.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_FULL_TEXT_SEARCH" value="http://r2024x.mydomain.com:19000"/>
+  <SetVariable name="X3DCSMA_FEDERATED_SEARCH" value="https://r2024x.mydomain.com:443/federated"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://r2024x.mydomain.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DSpaceURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_3DSWYMURL" value="https://r2024x.mydomain.com:443/3dswym"/>
+  <SetVariable name="X3DCSMA_3DCommentURL" value="https://r2024x.mydomain.com:443/3dcomment"/>
+  <SetVariable name="X3DCSMA_3DNotificationURL" value="https://r2024x.mydomain.com:443/3dnotification"/>
+  <SetVariable name="X3DCSMA_3DMESSAGING_URL" value="https://r2024x.mydomain.com:443/3dmessaging"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@mydomain.com"/>
+  <SetVariable name="X3DCSMA_build_archives" value="true"/>
+  <SetVariable name="X3DCSMA_deploy_archives" value="true"/>
+  <SetVariable item="BOOL_LargeJavaHeapSize" name="X3DCSMA_JavaHeapSize" value="true"/>
+  <SetVariable name="X3DCSMA_portCAS" value="9080"/>
+  <SetVariable name="X3DCSMA_SXI_postinstall" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DSpace"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

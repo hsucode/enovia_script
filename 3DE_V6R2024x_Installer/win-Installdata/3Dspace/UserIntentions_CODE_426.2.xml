@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\win_b64\X3D_CSMA.media" mediaVersion="426.2">
+  <SetVariable name="Java@jdk" value="C:\jdk-17.0.10+7"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="Path_TnsNamesOraPath" value=""/>
+  <SetVariable name="Oracle_ConnectUser" value="M1"/>
+  <SetVariable name="Oracle_Instance" value="//dsplm24x.jxjty.com:1521/enoviav6"/>
+  <SetVariable name="Oracle_Default_Data_TBS" value="M1_DATA"/>
+  <SetVariable name="Oracle_Default_Index_TBS" value="M1_INDEX"/>
+  <SetVariable item="Oracle" name="Radio_DBChoice" value="true"/>
+  <SetVariableProtected name="X3DCSMA_creator_password" value="Put your password here."/>
+  <SetVariableProtected name="X3DCSMA_administrator_password" value="Put your password here."/>
+  <SetVariable name="DATA_TARGET_PATH" value="D:\DassaultSystemes\3DSpaceData"/>
+  <SetVariable name="BOOL_UpdateDB" value="true"/>
+  <SetVariable name="Text_DataTBS" value="^e(Text_DataTBS_wrap)"/>
+  <SetVariable name="Text_IndexTBS" value="^e(Text_IndexTBS_wrap)"/>
+  <SetVariable name="Text_DataTBS_wrap" value="I1_DATA"/>
+  <SetVariable name="Text_IndexTBS_wrap" value="I1_INDEX"/>
+  <SetVariable name="VplmDataTBS" value="V1_DATA"/>
+  <SetVariable name="VplmIndexTBS" value="V1_INDEX"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://dsplm24x.jxjty.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_FULL_TEXT_SEARCH" value="http://dsplm24x.jxjty.com:19000"/>
+  <SetVariable name="X3DCSMA_FEDERATED_SEARCH" value="https://dsplm24x.jxjty.com:443/federated"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://dsplm24x.jxjty.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DSpaceURL" value="https://dsplm24x.jxjty.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_3DSWYMURL" value="https://dsplm24x.jxjty.com:443/3dswym"/>
+  <SetVariable name="X3DCSMA_3DCommentURL" value="https://dsplm24x.jxjty.com:443/3dcomment"/>
+  <SetVariable name="X3DCSMA_3DNotificationURL" value="https://dsplm24x.jxjty.com:443/3dnotification"/>
+  <SetVariable name="X3DCSMA_3DMESSAGING_URL" value="https://dsplm24x.jxjty.com:443/3dmessaging"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@jxjty.com"/>
+  <SetVariable name="X3DCSMA_build_archives" value="false"/>
+  <SetVariable name="X3DCSMA_deploy_archives" value="false"/>
+  <SetVariable item="BOOL_MediumJavaHeapSize" name="X3DCSMA_JavaHeapSize" value="true"/>
+  <SetVariable name="X3DCSMA_SXI_postinstall" value="true"/>
+  <SetVariable name="X3DCSMA_BOOL_ToolsinStartMenu" value="true"/>
+  <SetVariable name="X3DCSMA_BOOL_ShortcutsOnDesktop" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\X3D_INTF_SC.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="X3DCSMA_3DPassportURL" value="https://r2024x.mydomain.com:443/3dpassport"/>
+  <SetVariable name="X3DCSMA_3DDashboardURL" value="https://r2024x.mydomain.com:443/3ddashboard"/>
+  <SetVariable name="X3DCSMA_3DCompassURL" value="https://r2024x.mydomain.com:443/3dspace"/>
+  <SetVariable name="X3DCSMA_3DSWYMURL" value="https://r2024x.mydomain.com:443/3dswym"/>
+  <SetVariable name="X3DCSMA_3DNotificationURL" value="https://r2024x.mydomain.com:443/3dnotification"/>
+  <SetVariable name="NODEINFRACONF_DIR" value="/app/DassaultSystemes/R2024x/3DNotificationData"/>
+  <SetVariable name="NODEINFRALOG_DIR" value="/app/DassaultSystemes/R2024x/3DNotification/3DNotificationLogs"/>
+  <SetVariable name="NODEINFRATMP_DIR" value="/app/DassaultSystemes/R2024x/3DNotificationTemp"/>
+  <SetVariable name="X3DCSMA_SMTP_HOST" value="localhost"/>
+  <SetVariable name="X3DCSMA_SMTP_MAIL_SENDER" value="admin_platform@mydomain.com"/>
+  <SetVariable name="X3DCSMA_SMTP_CERT" value="true"/>
+  <SetVariable item="None" name="X3DCSMA_ESMTP_MODE_RADIO_BUTTON" value="true"/>
+  <SetVariable name="X3DCSMA_ESMTP_PORT" value="587"/>
+  <SetVariable name="X3DCSMA_ESMTP_USER" value="admin_platform"/>
+  <SetVariableProtected name="X3DCSMA_ESMTP_PASSWORD" value="Put your password here."/>
+  <SetVariable name="DB_ORACLE_TNSNAMES_DIR" value=""/>
+  <SetVariable name="DB_ORACLE_FULLSERVICE" value="//localhost:1521/MYDB"/>
+  <SetVariable name="DB_ORACLE_USER" value="x3dnotif"/>
+  <SetVariableProtected name="DB_ORACLE_PASSWORD" value="Put your password here."/>
+  <SetVariable name="NODEBACKEND_URL_PORT" value="8090"/>
+  <SetVariable item="oracle" name="DB_TYPE" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DNotification"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserIntentions mediaName="CODE\linux_a64\SIMULIA_3DOrchestration.media" mediaVersion="426">
+  <SetVariable name="Java@jdk" value="/app/openjdk/jdk17"/>
+  <SetVariable name="installEmbeddedServerJRE" value="false"/>
+  <SetVariable name="install_Embedded_TomEE" value="true"/>
+  <SetVariable name="TomEEConnectionPort" value="8180"/>
+  <SetVariable name="tomEEAjpPort" value="8109"/>
+  <SetVariable name="tomEERedirectPort" value="8443"/>
+  <SetVariable name="jmsHttpPort" value="61716"/>
+  <SetVariable name="jmsTcpPort" value="61617"/>
+  <SetVariable item="EED_Config_0" name="EED_Determine_Configuration" value="true"/>
+  <SetVariable name="eedServerName" value="3DOrchestrate"/>
+  <SetVariable name="eedDeployPath" value="/app/DassaultSystemes/R2024x/3DOrchestrate/exe1"/>
+  <SetVariable name="deploy_isSilent" value="true"/>
+  <SetVariable name="DSYWelcomePanel"/>
+  <SetVariable name="TARGET_PATH" value="/app/DassaultSystemes/R2024x/3DOrchestrate"/>
+  <!--3DEXPERIENCE Execution Server-->
+  <SetVariable item="CODE\linux_a64\EED.prd" name="SelectProduct" value="true"/>
+  <!--3DEXPERIENCE Execution Station-->
+  <SetVariable item="CODE\linux_a64\EER.prd" name="SelectProduct" value="true"/>
+  <!--SIMULIA Station Adapter Executors-->
+  <SetVariable item="CODE\linux_a64\SIMEERA_TP.prd" name="SelectProduct" value="true"/>
+  <SetVariable name="FinishPanel"/>
+</UserIntentions>
