@@ -17,4 +17,4 @@ rem git push -u origin master
 git push 
 cd ..
 
-pause
+timeout /t 3
