@@ -1,3 +1,6 @@
+# enovia_script
+3DEXPERRENCE SCRIPTS
+
 
 
 # 3DEXPERIENCE R2024x windows server installation
@@ -8,28 +11,27 @@
 ## website
 
 ```batch
-start https://dsplm24x.jxjty.com/3dpassport
-start https://dsplm24x.jxjty.com/3ddashboard
-start http://dsplm24x.jxjty.com:19001
-start https://dsplm24x.jxjty.com/3dswym
-start https://dsplm24x.jxjty.com/3dspace
-start https://dsplm24x.jxjty.com/federated/search?query=test
+start https://dsplm24x.3ds.com/3dpassport
+start https://dsplm24x.3ds.com/3ddashboard
+start http://dsplm24x.3ds.com:19001
+start https://dsplm24x.3ds.com/3dswym
+start https://dsplm24x.3ds.com/3dspace
+start https://dsplm24x.3ds.com/federated/search?query=test
 
 ```
 ## host
+
+
 ```batch
-
-echo 127.0.0.1 dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
-echo 127.0.0.1 untrusted.dsplm24x.jxjty.com>> C:\Windows\System32\drivers\etc\hosts
-
+echo 127.0.0.1 dsplm24x.3ds.com>> C:\Windows\System32\drivers\etc\hosts
+echo 127.0.0.1 untrusted.dsplm24x.3ds.com>> C:\Windows\System32\drivers\etc\hosts
 ```
 
 
 ## java
 
-cd /d %~dp0
-
 ```batch
+cd /d %~dp0
 unzip.exe ibm-semeru-open-jdk_x64_windows_17.0.9_9_openj9-0.41.0.zip -d c:\
 ```
 
@@ -45,8 +47,8 @@ setx /m Path "%PATH%;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;"
 
 ## user data
 
-- all password 
-    
+- all password
+
     Qwer1234
 
 
@@ -91,7 +93,7 @@ net stop OracleServiceENOVIAV6
 unzip httpd-2.4.55-o111s-x64-vs17 -d c:\
 ```
 
-创建一个 dsplm24x_jxjty_com.ext 在ssl文件夹，内容如下，后期会用到
+创建一个 dsplm24x_3ds_com.ext 在ssl文件夹，内容如下，后期会用到
 
 ```conf
 
@@ -100,8 +102,8 @@ basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = dsplm24x.jxjty.com
-DNS.2 = dsplm24x.jxjty.com
+DNS.1 = dsplm24x.3ds.com
+DNS.2 = dsplm24x.3ds.com
 
 ```
 逐步运行如下脚本
@@ -114,13 +116,13 @@ openssl genrsa -des3 -out RootCA.key -passout pass:Qwer1234 2048
 
 openssl req -x509 -sha256 -new -nodes -key RootCA.key -days 3650 -out RootCA.crt -passin pass:Qwer1234 -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=RootCA"
 
-openssl rsa -in RootCA.key -out dsplm24x_jxjty_com.key -passin pass:Qwer1234
+openssl rsa -in RootCA.key -out dsplm24x_3ds_com.key -passin pass:Qwer1234
 
-openssl req -new -key dsplm24x_jxjty_com.key -out dsplm24x_jxjty_com.csr -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=*.jxjty.com"
+openssl req -new -key dsplm24x_3ds_com.key -out dsplm24x_3ds_com.csr -subj "/C=ZH/ST=BJ/L=BJ/O=DSCN/OU=CS/CN=*.jxjty.com"
 
-openssl x509 -sha256 -req -in dsplm24x_jxjty_com.csr -CA RootCA.crt -CAkey RootCA.key -CAcreateserial -out dsplm24x_jxjty_com.crt -days 3650 -passin pass:Qwer1234 -extfile dsplm24x_jxjty_com.ext
+openssl x509 -sha256 -req -in dsplm24x_3ds_com.csr -CA RootCA.crt -CAkey RootCA.key -CAcreateserial -out dsplm24x_3ds_com.crt -days 3650 -passin pass:Qwer1234 -extfile dsplm24x_3ds_com.ext
 
-openssl x509 -noout -text -in dsplm24x_jxjty_com.crt
+openssl x509 -noout -text -in dsplm24x_3ds_com.crt
 
 keytool -importcert -keystore "%JAVA_HOME%\lib\security\cacerts" -noprompt -storepass changeit -file RootCA.crt -alias RootCA
 
@@ -133,10 +135,6 @@ keytool -list -keystore /path/to/keystore.jks
 keytool -list -v -keystore /path/to/keystore.jks | grep -A 10 'Alias name: mycert'
 
 keytool -list -v -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit
-
-
-C:\Apache24\bin\openssl.exe x509 -noout -text -in r2022x.crt
-
 
 ```
 
@@ -203,13 +201,14 @@ AddOutputFilterByType DEFLATE application/atom_xml
 Listen 443
 
 <VirtualHost *:443>
-    ServerName dsplm24x.jxjty.com
-    ServerAlias dsplm24x.jxjty.com
+    ServerName dsplm24x.3ds.com
+    ServerAlias dsplm24x.3ds.com
     SSLEngine on
     SSLProxyEngine On
-    SSLCertificateFile conf/ssl/dsplm24x_jxjty_com.crt
-    SSLCertificateKeyFile conf/ssl/dsplm24x_jxjty_com.key
+    SSLCertificateFile conf/ssl/dsplm24x_3ds_com.crt
+    SSLCertificateKeyFile conf/ssl/dsplm24x_3ds_com.key
     ProxyRequests Off
+    # setup
     #Include conf/3DPassport_httpd_fragment.conf
     #Include conf/3DDashboard_httpd_fragment.conf
     #Include conf/mepreferences_httpd_fragment.conf
@@ -222,12 +221,12 @@ Listen 443
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName untrusted.dsplm24x.jxjty.com
-    ServerAlias untrusted.dsplm24x.jxjty.com
+    ServerName untrusted.dsplm24x.3ds.com
+    ServerAlias untrusted.dsplm24x.3ds.com
     SSLEngine on
     SSLProxyEngine On
-    SSLCertificateFile conf/ssl/dsplm24x_jxjty_com.crt
-    SSLCertificateKeyFile conf/ssl/dsplm24x_jxjty_com.key
+    SSLCertificateFile conf/ssl/dsplm24x_3ds_com.crt
+    SSLCertificateKeyFile conf/ssl/dsplm24x_3ds_com.key
     ProxyRequests Off
 </VirtualHost>
 
@@ -268,7 +267,6 @@ md c:\TomEE\3DSwym
 md c:\TomEE\3DComment
 md c:\TomEE\3DNotification
 
-
 :a
 unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3dpassport
 unzip.exe apache-tomee-8.0.12-plus.zip -d c:\TomEE\3ddashboard
@@ -295,24 +293,22 @@ goto 0
 ```
 
 
-## slient  installation
-
-
-
 
 ## install data
 
 
-//dsplm24x.jxjty.com:1521/enoviav6
+//dsplm24x.3ds.com:1521/enoviav6
 
 | name | password |
 |  ----  | ----  |
 | admin_platform@jxjty.com |Qwer1234 |
 
 
-https://dsplm24x.jxjty.com:443/3dpassport
+https://dsplm24x.3ds.com:443/3dpassport
 
-https://dsplm24x.jxjty.com:443/3dspace
+https://dsplm24x.3ds.com:443/3dspace
+
+
 
 
 ## 3dpassport
@@ -384,9 +380,9 @@ copy D:\DassaultSystemes\R2024x\FedSearch\win_b64\templates\*.conf C:\Apache24\c
 
 Error : Can not load mxoci80.dll ?
 
-[msvcp120.dll](./24_3dspace/msvcp120.dll)
+[msvcp120.dll](./3DE_V6R2024x_Installer/ga_media_patch_3dspace/msvcp120.dll)
 
-[msvcr120.dll](./24_3dspace/msvcr120.dll)
+[msvcr120.dll](./3DE_V6R2024x_Installer/ga_media_patch_3dspace/msvcr120.dll)
 
 ```batch
 copy msvcp120.dll D:\DS\V6R2024x\AM_3DEXP_Platform.AllOS\2\3DSpace\Windows64\1\inst\DBConnectionTest\win_b64\code\bin\
